@@ -1,6 +1,7 @@
 package com.ezinnovations.ezkeyall.command;
 
 import com.ezinnovations.ezkeyall.config.ConfigManager;
+import com.ezinnovations.ezkeyall.time.CompactTimeFormatter;
 import com.ezinnovations.ezkeyall.timer.TimerService;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -50,11 +51,11 @@ public final class EzKeyAllCommand implements CommandExecutor, TabCompleter {
             }
             case "time" -> {
                 if (configManager.isServerWide()) {
-                    sender.sendMessage("§aServer-wide timer remaining: §f" + formatTime(Math.max(0, timerService.getServerRemaining())));
+                    sender.sendMessage("§aServer-wide timer remaining: §f" + CompactTimeFormatter.format(timerService.getServerRemaining()));
                 } else {
                     if (sender instanceof Player player) {
                         int remaining = timerService.getRemainingFor(player);
-                        sender.sendMessage("§aYour timer remaining: §f" + formatTime(remaining));
+                        sender.sendMessage("§aYour timer remaining: §f" + CompactTimeFormatter.format(remaining));
                     } else {
                         sender.sendMessage("§ePer-player mode is active. Run as a player to view personal remaining time.");
                     }
@@ -86,10 +87,4 @@ public final class EzKeyAllCommand implements CommandExecutor, TabCompleter {
         return List.of();
     }
 
-    private String formatTime(int totalSeconds) {
-        int hours = totalSeconds / 3600;
-        int minutes = (totalSeconds % 3600) / 60;
-        int seconds = totalSeconds % 60;
-        return String.format("%02d:%02d:%02d", hours, minutes, seconds);
-    }
 }

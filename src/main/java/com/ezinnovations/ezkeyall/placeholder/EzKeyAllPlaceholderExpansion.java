@@ -1,6 +1,7 @@
 package com.ezinnovations.ezkeyall.placeholder;
 
 import com.ezinnovations.ezkeyall.EzKeyAll;
+import com.ezinnovations.ezkeyall.time.CompactTimeFormatter;
 import com.ezinnovations.ezkeyall.timer.TimerService;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.OfflinePlayer;
@@ -43,20 +44,10 @@ public final class EzKeyAllPlaceholderExpansion extends PlaceholderExpansion {
         }
 
         if (player != null && player.isOnline() && player.getPlayer() != null) {
-            return formatTime(timerService.getRemainingFor(player.getPlayer()));
+            return CompactTimeFormatter.format(timerService.getRemainingFor(player.getPlayer()));
         }
 
-        return formatTime(timerService.getServerRemaining());
+        return CompactTimeFormatter.format(timerService.getServerRemaining());
     }
 
-    private String formatTime(int totalSeconds) {
-        int safeSeconds = Math.max(0, totalSeconds);
-
-        if (safeSeconds >= 60) {
-            int totalMinutes = safeSeconds / 60;
-            return totalMinutes + "m";
-        }
-
-        return safeSeconds + "s";
-    }
 }

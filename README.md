@@ -123,7 +123,7 @@ EzKeyAll supports a small, explicit placeholder/token set in its own message pip
 - When `click-command` is configured, the replaced text becomes clickable and runs that command.
 
 ### `%ezkeyall_timer%`
-- Replaced by EzKeyAll with the configured `timer` value (in seconds).
+- Replaced by EzKeyAll with the current remaining timer in compact format (e.g., `59s`, `40m`, `60m`).
 - Available in actionbar, chat, title, and subtitle message strings.
 
 ### `%player%`
