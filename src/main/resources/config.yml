@@ -1,0 +1,48 @@
+timer: 3600
+server-wide: true
+sound-on-reward: ENTITY_PLAYER_LEVELUP
+# Available message types:
+# ACTIONBAR | CHAT | TITLE
+messages:
+- ACTIONBAR
+- CHAT
+title-settings:
+  fade-in: 10
+  stay: 40
+  fade-out: 10
+  title-message: '&#F7971E&lFREEKEY REWARD'
+  subtitle-message: '&#EDEDEDYou received a &#F7971E{key-name} &7key'
+chat-settings:
+  message:
+  - '&#3A3A3A&m━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
+  - '&#F7971E&lFREEKEY REWARD'
+  - '&#EDEDEDYou have been rewarded with a &#F7971E{key-name}'
+  - '&#7A7A7AClick below to open your reward'
+  - '&#F7971E&l➤ &r&#FFFFFF[click-command-message]'
+  - '&#3A3A3A&m━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
+actionbar-settings:
+  message:
+  - '&#F7971E&lFREEKEY &8» &#FFFFFFYou received a &#F7971E{key-name}'
+click-command: /spawn
+click-command-message: '&#F7971E&l[CLICK TO TELEPORT]'
+rewards:
+  '1':
+    command: dc givekey %player% common 1
+    chance: 80.0
+    key-name: '&#B9F2FFCommon Key'
+  '2':
+    command: dc givekey %player% prime 1
+    chance: 10
+    key-name: '&#8F8F8FPrime Key'
+  '3':
+    command: dc givekey %player% gold 1
+    chance: 7
+    key-name: '&#8F8F8FGold Key'
+  '4':
+    command: dc givekey %player% Crimson 1
+    chance: 2
+    key-name: '&#8F8F8FCrimson Key'
+  '5':
+    command: dc givekey %player% Amethyst 1
+    chance: 1
+    key-name: '&#8F8F8FAmethyst Key'
