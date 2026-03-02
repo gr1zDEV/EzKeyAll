@@ -1,0 +1,17 @@
+name: EzKeyAll
+version: ${project.version}
+main: com.ezinnovations.ezkeyall.EzKeyAll
+api-version: '1.21'
+folia-supported: true
+commands:
+  ezkeyall:
+    description: Main admin command for EzKeyAll.
+    usage: /ezkeyall <reload|reset|time>
+    permission: ezkeyall.admin
+permissions:
+  ezkeyall.admin:
+    description: Allows administrative access to EzKeyAll commands.
+    default: op
+  ezkeyall.bypass:
+    description: Excludes players from EzKeyAll rewards.
+    default: false
