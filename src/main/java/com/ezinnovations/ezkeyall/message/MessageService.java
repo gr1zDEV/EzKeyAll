@@ -19,6 +19,7 @@ import java.util.regex.Pattern;
 public final class MessageService {
     private static final Pattern HEX_PATTERN = Pattern.compile("&#([A-Fa-f0-9]{6})");
     private static final String CLICK_TOKEN = "[click-command-message]";
+    private static final String TIMER_PLACEHOLDER = "%ezkeyall_timer%";
 
     private final ConfigManager configManager;
     private final LegacyComponentSerializer legacySerializer;
@@ -134,7 +135,8 @@ public final class MessageService {
             return "";
         }
         String withClick = input.replace(CLICK_TOKEN, configManager.getClickCommandMessage());
-        return withClick.replace("{key-name}", reward.keyName());
+        String withKeyName = withClick.replace("{key-name}", reward.keyName());
+        return withKeyName.replace(TIMER_PLACEHOLDER, Integer.toString(configManager.getTimerSeconds()));
     }
 
     public Component parse(String input) {
