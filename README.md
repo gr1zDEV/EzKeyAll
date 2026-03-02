@@ -122,6 +122,10 @@ EzKeyAll supports a small, explicit placeholder/token set in its own message pip
 - Replaced with the configured `click-command-message` text.
 - When `click-command` is configured, the replaced text becomes clickable and runs that command.
 
+### `%ezkeyall_timer%`
+- Replaced by EzKeyAll with the configured `timer` value (in seconds).
+- Available in actionbar, chat, title, and subtitle message strings.
+
 ### `%player%`
 - Not replaced by EzKeyAll message code.
 - Intended for reward commands (inside `rewards.*.command`) so downstream command handlers can target the player.
