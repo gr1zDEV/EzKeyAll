@@ -15,3 +15,6 @@ permissions:
   ezkeyall.bypass:
     description: Excludes players from EzKeyAll rewards.
     default: false
+
+softdepend:
+  - PlaceholderAPI

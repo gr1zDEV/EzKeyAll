@@ -28,6 +28,7 @@ public final class EzKeyAll extends JavaPlugin {
 
         this.timerService.start();
         registerCommand();
+        registerPlaceholderExpansion();
     }
 
     @Override
@@ -37,6 +38,22 @@ public final class EzKeyAll extends JavaPlugin {
         }
         if (dataStore != null) {
             dataStore.save();
+        }
+    }
+
+    private void registerPlaceholderExpansion() {
+        if (getServer().getPluginManager().getPlugin("PlaceholderAPI") == null) {
+            return;
+        }
+
+        try {
+            Class<?> expansionClass = Class.forName("com.ezinnovations.ezkeyall.placeholder.EzKeyAllPlaceholderExpansion");
+            Object expansion = expansionClass
+                    .getConstructor(EzKeyAll.class, TimerService.class)
+                    .newInstance(this, timerService);
+            expansionClass.getMethod("register").invoke(expansion);
+        } catch (ReflectiveOperationException ex) {
+            getLogger().warning("Failed to register PlaceholderAPI expansion: " + ex.getMessage());
         }
     }
 
